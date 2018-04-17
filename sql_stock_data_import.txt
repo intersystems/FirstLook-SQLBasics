@@ -1,0 +1,39 @@
+CREATE TABLE Sample.StockTrades (CustomerID VARCHAR(32), BrokerID VARCHAR(32),
+StockSymbol VARCHAR(10), TransactionType VARCHAR(4), TransactionDate DATE, NbrShares INTEGER, PricePerShare DOUBLE, CommmissionRate DOUBLE)
+GO
+INSERT INTO Sample.StockTrades (CustomerID, BrokerID, StockSymbol, TransactionType, TransactionDate, NbrShares, PricePerShare, CommmissionRate) 
+   VALUES ('C29834783','B3103', 'RTYU', 'SELL',  TO_DATE('01-03-2016','MM-DD-YYYY'), 342, 5.05, 3.25)
+GO
+INSERT INTO Sample.StockTrades (CustomerID, BrokerID, StockSymbol, TransactionType, TransactionDate, NbrShares, PricePerShare, CommmissionRate) 
+   VALUES ('C59203943','B5001', 'ASUB', 'BUY',  TO_DATE('12-13-2017','MM-DD-YYYY'), 56, 15.62, 4.25)
+GO
+INSERT INTO Sample.StockTrades (CustomerID, BrokerID, StockSymbol, TransactionType, TransactionDate, NbrShares, PricePerShare, CommmissionRate) 
+   VALUES ('C29834783','B3103', 'FGQT', 'BUY',  TO_DATE('01-14-2016','MM-DD-YYYY'), 500, 32.41, 3.25)
+GO
+INSERT INTO Sample.StockTrades (CustomerID, BrokerID, StockSymbol, TransactionType, TransactionDate, NbrShares, PricePerShare, CommmissionRate) 
+   VALUES ('C10993023','B1009', 'BYTR', 'SELL',  TO_DATE('01-15-2016','MM-DD-YYYY'), 50, 33.87, 5.25)
+GO
+INSERT INTO Sample.StockTrades (CustomerID, BrokerID, StockSymbol, TransactionType, TransactionDate, NbrShares, PricePerShare, CommmissionRate) 
+   VALUES ('C40149304','B5001', 'YQER', 'SELL',  TO_DATE('11-13-2015','MM-DD-YYYY'), 120, 109.28, 4.25)
+GO
+INSERT INTO Sample.StockTrades (CustomerID, BrokerID, StockSymbol, TransactionType, TransactionDate, NbrShares, PricePerShare, CommmissionRate) 
+   VALUES ('C37482093','B1009', 'TIOE', 'BUY',  TO_DATE('03-01-2018','MM-DD-YYYY'), 500, 56.23, 5.25)
+GO
+INSERT INTO Sample.StockTrades (CustomerID, BrokerID, StockSymbol, TransactionType, TransactionDate, NbrShares, PricePerShare, CommmissionRate) 
+   VALUES ('C92609349','B3103', 'HWVT', 'BUY',  TO_DATE('10-25-2017','MM-DD-YYYY'), 1500, 451.09, 3.25)
+GO
+INSERT INTO Sample.StockTrades (CustomerID, BrokerID, StockSymbol, TransactionType, TransactionDate, NbrShares, PricePerShare, CommmissionRate) 
+   VALUES ('C40149304','B5001', 'YQER', 'SELL',  TO_DATE('10-13-2015','MM-DD-YYYY'), 120, 105.30, 4.25)
+GO
+INSERT INTO Sample.StockTrades (CustomerID, BrokerID, StockSymbol, TransactionType, TransactionDate, NbrShares, PricePerShare, CommmissionRate) 
+   VALUES ('C29834783','B3103', 'HJQU', 'BUY',  TO_DATE('07-23-2017','MM-DD-YYYY'), 650, 110.41, 3.25)
+GO
+INSERT INTO Sample.StockTrades (CustomerID, BrokerID, StockSymbol, TransactionType, TransactionDate, NbrShares, PricePerShare, CommmissionRate) 
+        VALUES ('C85102938','B5001', 'WTI', 'SELL',  TO_DATE('07-31-2017','MM-DD-YYYY'), 350, 66.23, 4.25)
+GO
+SELECT * FROM Sample.StockTrades
+    WHERE TransactionType='BUY' and PricePerShare > 100
+     ORDER BY PricePerShare
+GO
+DROP TABLE Sample.StockTrades
+GO
