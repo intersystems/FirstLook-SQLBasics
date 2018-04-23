@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="IRIS" version="26">
+<Class name="FirstLook.Loader">
+<Description>
+A demonstration class for loading data for the SQL First Looks</Description>
+<Super>%RegisteredObject</Super>
+<TimeCreated>64755,61974.210546</TimeCreated>
+
+<Method name="LoadStockTableCSV">
+<Description>
+Load stock table data for the SQL First Looks from a CSV file</Description>
+<ClassMethod>1</ClassMethod>
+<FormalSpec>csvFile:%String</FormalSpec>
+<ReturnType>%Integer</ReturnType>
+<SqlProc>1</SqlProc>
+<Implementation><![CDATA[
+	Set sc = ##class(FirstLook.StockTableDemoTwo).%KillExtent()
+	If 'sc Throw ##class(%Exception.StatusException).CreateFromStatus(sc)
+	Set input = ##class(%Stream.FileCharacter).%New()
+	Set sc = input.LinkToFile(csvFile)
+	If 'sc Throw ##class(%Exception.StatusException).CreateFromStatus(sc)
+	Set count = 0
+	While 'input.AtEnd {
+		Set row = input.ReadLine(,.sc)
+		If 'sc Throw ##class(%Exception.StatusException).CreateFromStatus(sc)
+		Set transactionDate = $piece(row,",",1)
+		Set clientId = $piece(row,",",2)
+		Set brokerId = $piece(row,",",3)
+		Set transactionType = $piece(row,",",4)
+		Set symbol = $piece(row,",",5)
+		Set quantity = $piece(row,",",6)
+		Set price = $piece(row,",",7)
+		Set commissionRate = $piece(row,",",8)
+		&sql(insert %NOLOCK into FirstLook.StockTableDemoTwo
+			(TransactionDate,ClientId,BrokerId,TransactionType,Symbol,Quantity,Price,CommissionRate)
+			values
+			(:transactionDate,:clientId,:brokerId,:transactionType,:symbol,:quantity,:price,:commissionRate))
+		If SQLCODE'=0 Throw ##class(%Exception.SQL).CreateFromSQLCODE(SQLCODE,%msg)
+		Set count = count + 1
+	}
+	Return count
+]]></Implementation>
+</Method>
+</Class>
+</Export>
