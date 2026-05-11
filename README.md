@@ -1,5 +1,5 @@
 # FirstLook-SQLBasics
-This repository provides the sample data and loader program that you will need to work through the demos in <a href="http://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=AFL_sqlbasics">First Look: SQL and InterSystems IRIS</a>.
+This repository provides the sample data and loader program that you will need to work through the demos in <a href="https://learning.intersystems.com/course/view.php?name=SQL%20QS">Running Fast Queries with SQL in InterSystems IRIS</a>.
 
 Files in this sample include:
 
